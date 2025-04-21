@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Perfeita Skincare | Natural Beauty Solutions</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;500;700&family=Poppins:wght@300;400;500;600;700&display=swap');
+
+    :root {
+      --bg-color: #f9f5f0;
+      --text-color: #080225;
+      --primary-color: #81b0f3;
+      --secondary-color: #1b78c9;
+      --hover-color: #0ab6bb;
+      --accent-color: #f5d0ba;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+      text-decoration: none;
+      transition: 0.3s ease;
+    }
+
+    body {
+      background-color: white;
+      color: var(--text-color);
+    }
+
+   
+
+    
+
+    .main {
+      width: 100%;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 8rem 5rem 2rem;
+      gap: 2rem;
+      flex-wrap: wrap;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .content {
+      flex: 1;
+      min-width: 300px;
+      max-width: 600px;
+      z-index: 2;
+    }
+
+    .content h4 {
+      font-size: 1.2rem;
+      color: var(--primary-color);
+      font-weight: 600;
+      letter-spacing: 1px;
+      opacity: 0;
+      animation: fadeIn 1s ease-in-out forwards;
+      animation-delay: 0.2s;
+    }
+
+    .content h2 {
+      font-size: 4.5rem;
+      font-family: 'Playfair Display', serif;
+      color: var(--hover-color);
+      line-height: 1.1;
+      margin: 10px 0;
+      opacity: 0;
+      animation: fadeIn 1s ease-in-out forwards;
+      animation-delay: 0.4s;
+    }
+
+    .content p {
+      font-size: 1.2rem;
+      color: #666;
+      margin: 1.2rem 0;
+      line-height: 1.6;
+      opacity: 0;
+      animation: fadeIn 1s ease-in-out forwards;
+      animation-delay: 0.6s;
+    }
+
+    .content .action {
+      margin-top: 2rem;
+      display: flex;
+      gap: 1rem;
+      opacity: 0;
+      animation: fadeIn 1s ease-in-out forwards;
+      animation-delay: 0.8s;
+    }
+
+    .content .action a {
+      display: inline-block;
+      padding: 0.8rem 2rem;
+      background: var(--primary-color);
+      color: white;
+      border-radius: 2rem;
+      font-weight: 500;
+      font-size: 1.1rem;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .content .action a:hover {
+      background: var(--hover-color);
+      transform: translateY(-5px);
+      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+    }
+
+    .content .action a.secondary {
+      background: transparent;
+      color: var(--text-color);
+      border: 2px solid var(--primary-color);
+    }
+
+    .content .action a.secondary:hover {
+      background: var(--primary-color);
+      color: white;
+    }
+
+    .features {
+      display: flex;
+      gap: 2rem;
+      margin-top: 3rem;
+      flex-wrap: wrap;
+      opacity: 0;
+      animation: fadeIn 1s ease-in-out forwards;
+      animation-delay: 1s;
+    }
+
+    .feature {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .feature i {
+      color: var(--primary-color);
+      font-size: 1.2rem;
+    }
+
+    .feature p {
+      margin: 0;
+      font-size: 0.9rem;
+    }
+
+    .products {
+      display: flex;
+      gap: 1.5rem;
+      margin-top: 2.5rem;
+      flex-wrap: wrap;
+      opacity: 0;
+      animation: fadeIn 1s ease-in-out forwards;
+      animation-delay: 1.2s;
+    }
+
+    .product-box {
+      text-align: center;
+      cursor: pointer;
+      transition: transform 0.3s ease-in-out;
+      position: relative;
+      overflow: hidden;
+      width: 9rem;
+    }
+
+    .product-box img {
+      width: 100%;
+      height: 11rem;
+      object-fit: cover;
+      border-radius: 0.5rem;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      transition: transform 0.5s ease;
+    }
+
+    .product-overlay {
+      position: absolute;
+      bottom: -60px;
+      left: 0;
+      right: 0;
+      background: rgba(129, 176, 243, 0.8);
+      padding: 10px;
+      color: white;
+      transition: bottom 0.3s ease;
+      border-radius: 0 0 0.5rem 0.5rem;
+    }
+
+    .product-box:hover .product-overlay {
+      bottom: 0;
+    }
+
+    .product-box:hover {
+      transform: translateY(-10px);
+    }
+
+    .product-box:hover img {
+      transform: scale(1.05);
+    }
+
+    .product-box p {
+      font-size: 1rem;
+      margin-top: 0.5rem;
+      font-family: 'Playfair Display', serif;
+    }
+
+    .product-box .price {
+      color: var(--hover-color);
+      font-weight: 600;
+      margin-top: 5px;
+    }
+
+    .image {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-width: 350px;
+      max-width: 500px;
+      position: relative;
+      z-index: 1;
+     
+    }
+
+    .image-box {
+      width: 100%;
+      max-width: 450px;
+      aspect-ratio: 1 / 1.25;
+      position: relative;
+      opacity: 0;
+      animation: fadeRight 1s ease-in-out forwards;
+      animation-delay: 0.5s;
+   
+    }
+
+    .image-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+   
+      
+    }
+
+    .image-texture {
+      background: url('20241128_192455.jpg');
+      mix-blend-mode: screen;
+      background-position: center;
+      background-size: cover;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+     
+    }
+
+    .floating-elements {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      pointer-events: none;
+    }
+
+    .floating-element {
+      position: absolute;
+      width: 50px;
+      height: 50px;
+      background-color: var(--primary-color);
+      opacity: 0.3;
+      border-radius: 50%;
+    }
+
+    .floating-element:nth-child(1) {
+      top: 20%;
+      left: 10%;
+      width: 80px;
+      height: 80px;
+      animation: float 8s infinite ease-in-out;
+    }
+
+    .floating-element:nth-child(2) {
+      top: 60%;
+      right: 15%;
+      width: 120px;
+      height: 120px;
+      animation: float 12s infinite ease-in-out;
+      animation-delay: 2s;
+    }
+
+    .floating-element:nth-child(3) {
+      bottom: 15%;
+      left: 30%;
+      width: 60px;
+      height: 60px;
+      animation: float 10s infinite ease-in-out;
+      animation-delay: 1s;
+    }
+
+    .ratings-box {
+      position: absolute;
+      background: white;
+      padding: 15px;
+      border-radius: 10px;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+      bottom: -20px;
+      right: -20px;
+      z-index: 2;
+      width: 140px;
+      opacity: 0;
+      animation: fadeIn 1s ease-in-out forwards;
+      animation-delay: 1.5s;
+    }
+
+    .stars {
+      color: gold;
+      margin-bottom: 5px;
+    }
+
+    .count {
+      font-size: 0.8rem;
+      color: #666;
+    }
+
+    .testimonial {
+      position: absolute;
+      background: white;
+      padding: 15px;
+      border-radius: 10px;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+      top: 30px;
+      left: -30px;
+      width: 180px;
+      z-index: 3;
+      opacity: 0;
+      animation: fadeIn 1s ease-in-out forwards;
+      animation-delay: 1.8s;
+    }
+
+    .testimonial p {
+      font-size: 0.8rem;
+      font-style: italic;
+      margin-bottom: 10px;
+    }
+
+    .testimonial .author {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .testimonial .author img {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .testimonial .author span {
+      font-size: 0.7rem;
+      font-weight: 600;
+    }
+
+    .shape {
+      position: absolute;
+      z-index: 0;
+    }
+
+    .shape-1 {
+      width: 300px;
+      height: 300px;
+      background: var(--primary-color);
+      opacity: 0.05;
+      border-radius: 50%;
+      top: -100px;
+      left: -100px;
+    }
+
+    .shape-2 {
+      width: 200px;
+      height: 200px;
+      background: var(--hover-color);
+      opacity: 0.05;
+      border-radius: 50%;
+      bottom: -50px;
+      right: 100px;
+    }
+
+    @keyframes fadeIn {
+      0% {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeRight {
+      0% {
+        opacity: 0;
+        transform: translateX(50px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-20px);
+      }
+    }
+
+    @media (max-width: 1024px) {
+      .main {
+        padding: 8rem 3rem 2rem;
+      }
+      
+      .content h2 {
+        font-size: 3.5rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      header {
+        padding: 0 2rem;
+      }
+      
+      header nav {
+        display: none;
+      }
+      
+      .mobile-menu {
+        display: block;
+      }
+      
+      .main {
+        padding: 7rem 2rem 2rem;
+        flex-direction: column-reverse;
+      }
+      
+      .content, .image {
+        flex: 1 1 100%;
+      }
+      
+      .content h2 {
+        font-size: 3rem;
+      }
+      
+      .newsletter-form {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+    {% extends "base.html" %}
+
+    {% block content %}
+  
+  <div class="main">
+    <div class="shape shape-1"></div>
+    <div class="shape shape-2"></div>
+    
+    <div class="content">
+      <h4>Embrace Natural Beauty With</h4>
+      <h2>Perfeita Skincare</h2>
+      <p>Discover our premium, all-natural, and cruelty-free skincare collection. Formulated with nature's finest ingredients to reveal your skin's natural radiance.</p>
+      
+      <div class="features">
+        <div class="feature">
+          <i class="fa-solid fa-leaf"></i>
+          <p>100% Natural</p>
+        </div>
+        <div class="feature">
+          <i class="fa-solid fa-ban"></i>
+          <p>Cruelty-Free</p>
+        </div>
+        <div class="feature">
+          <i class="fa-solid fa-recycle"></i>
+          <p>Eco-Friendly</p>
+        </div>
+      </div>
+      
+      <div class="action">
+        
+        <a href="/about" class="secondary">Learn More</a>
+      </div>
+      
+      <div class="products">
+        <div class="product-box">
+          <img src="https://i.pinimg.com/736x/f9/84/4b/f9844b9054bfb7c2d2c554268e861b95.jpg" alt="PureGlow Elixir">
+          <p>PureGlow Elixir</p>
+          <!-- <div class="price">$42.99</div> -->
+          <div class="product-overlay">
+            <i class="fa-solid fa-eye"></i> Quick View
+          </div>
+        </div>
+        <div class="product-box">
+          <img src="https://i.pinimg.com/736x/26/c4/94/26c494359c1e1981cfa9d1277d3a77e8.jpg" alt="RevitalLuxe Cream">
+          <p>RevitalLuxe Cream</p>
+          <!-- <div class="price">$38.99</div> -->
+          <div class="product-overlay">
+            <i class="fa-solid fa-eye"></i> Quick View
+          </div>
+        </div>
+        <div class="product-box">
+          <img src="https://i.pinimg.com/736x/cb/37/e6/cb37e6147f47c2c900f62ec9328774ab.jpg" alt="LumiCreast Cream">
+          <p>LumiCreast Cream</p>
+          <!-- <div class="price">$45.99</div> -->
+          <div class="product-overlay">
+            <i class="fa-solid fa-eye"></i> Quick View
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="image">
+      <div class="image-box">
+        <img src="https://i.pinimg.com/736x/bc/a7/d5/bca7d50c6918ee2b86b65d674fa1c558.jpg" alt="Main Product" />
+        <div class="image-texture"></div>
+        
+        <div class="ratings-box">
+          <div class="stars">
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star-half-stroke"></i>
+          </div>
+          <div class="count">4.8/5 (2,458 reviews)</div>
+        </div>
+        
+        <div class="testimonial">
+          <p>"Transformed my skin in just weeks. Can't live without it!"</p>
+          <div class="author">
+            <img src="https://i.pinimg.com/736x/f6/61/44/f66144d9b47f1f49876cc1a5d4259035.jpg" alt="Customer">
+            <span>Sarah J., Verified Buyer</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="floating-elements">
+      <div class="floating-element"></div>
+      <div class="floating-element"></div>
+      <div class="floating-element"></div>
+    </div>
+   
+  </div>
+  {%endblock%}
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Mobile menu toggle
+      const mobileMenu = document.querySelector('.mobile-menu');
+      const nav = document.querySelector('header nav');
+      
+      mobileMenu.addEventListener('click', function() {
+        nav.style.display = nav.style.display === 'flex' ? 'none' : 'flex';
+      });
+      
+      // Shopping bag counter
+      const shopBag = document.querySelector('.fa-shopping-bag');
+      shopBag.setAttribute('data-count', '0');
+      
+      // Product hover effects
+      const products = document.querySelectorAll('.product-box');
+      products.forEach(product => {
+        product.addEventListener('mouseenter', function() {
+          this.querySelector('.product-overlay').style.bottom = '0';
+        });
+        
+        product.addEventListener('mouseleave', function() {
+          this.querySelector('.product-overlay').style.bottom = '-60px';
+        });
+      });
+    });
+  </script>
+</body>
+</html>

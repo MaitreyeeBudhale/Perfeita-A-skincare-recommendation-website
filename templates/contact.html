@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact Us | Perfeita</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"/>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: linear-gradient(135deg, #8EC5FC 0%, #E0C3FC 100%);
+      min-height: 100vh;
+      padding: 40px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    .floating-shapes {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .shape {
+      position: absolute;
+      animation: float 15s infinite linear;
+      opacity: 0.08;
+    }
+
+    @keyframes float {
+      0% { transform: translate(0, 0) rotate(0deg); }
+      50% { transform: translate(100px, 100px) rotate(180deg); }
+      100% { transform: translate(0, 0) rotate(360deg); }
+    }
+
+    .shape:nth-child(1) {
+      top: 15%;
+      left: 15%;
+      width: 100px;
+      height: 100px;
+      background: #3a6dee;
+      border-radius: 50%;
+    }
+
+    .shape:nth-child(2) {
+      bottom: 10%;
+      right: 10%;
+      width: 120px;
+      height: 120px;
+      background: #3a6dee;
+      clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%);
+      animation-delay: -6s;
+    }
+
+    .shape:nth-child(3) {
+      top: 60%;
+      left: 25%;
+      width: 80px;
+      height: 80px;
+      background: #3a6dee;
+      border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+      animation-delay: -4s;
+    }
+
+    .shape:nth-child(4) {
+      top: 30%;
+      right: 25%;
+      width: 90px;
+      height: 90px;
+      background: #3a6dee;
+      clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+      animation-delay: -10s;
+    }
+
+    .contact-container {
+      background: rgba(255, 255, 255, 0.95);
+      padding: 40px;
+      margin: 50px;
+      border-radius: 30px;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+      max-width: 1000px;
+      width: 100%;
+      z-index: 1;
+      position: relative;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      overflow-y: auto;
+      max-height: 90vh;
+    }
+
+    .logo {
+      width: 90px;
+      height: 90px;
+      background: linear-gradient(135deg, #8EC5FC 0%, #E0C3FC 100%);
+      border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+      color: white;
+      font-size: 40px;
+      animation: morphing 10s infinite;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    @keyframes morphing {
+      0% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
+      25% { border-radius: 58% 42% 75% 25% / 76% 46% 54% 24%; }
+      50% { border-radius: 50% 50% 33% 67% / 55% 27% 73% 45%; }
+      75% { border-radius: 33% 67% 58% 42% / 63% 68% 32% 37%; }
+      100% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
+    }
+
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      font-size: 32px;
+      background: linear-gradient(135deg, #8EC5FC 0%, #E0C3FC 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+
+    .tagline {
+      font-size: 16px;
+      color: #666;
+      margin-bottom: 30px;
+    }
+
+    .info-section {
+      margin-bottom: 30px;
+    }
+
+    .section-title {
+      font-size: 20px;
+      color: #333;
+      font-weight: 500;
+      margin-bottom: 15px;
+      display: flex;
+      align-items: center;
+    }
+
+    .section-title i {
+      margin-right: 10px;
+      color: #8EC5FC;
+    }
+
+    .contact-methods {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .contact-method {
+      display: flex;
+      align-items: center;
+      padding: 12px 20px;
+      background: #f5f5f5;
+      border-radius: 12px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .contact-method:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.05);
+    }
+
+    .method-icon {
+      width: 40px;
+      height: 40px;
+      background: linear-gradient(135deg, #8EC5FC 0%, #E0C3FC 100%);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 15px;
+      color: white;
+      font-size: 18px;
+    }
+
+    .method-details h3 {
+      font-size: 16px;
+      color: #333;
+      font-weight: 500;
+      margin-bottom: 2px;
+    }
+
+    .method-details p {
+      font-size: 14px;
+      color: #666;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 12px;
+      margin-top: 30px;
+    }
+
+    .social-link {
+      width: 40px;
+      height: 40px;
+      background: linear-gradient(135deg, #8EC5FC 0%, #E0C3FC 100%);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 18px;
+      transition: transform 0.3s ease;
+    }
+
+    .social-link:hover {
+      transform: scale(1.1);
+    }
+
+    .form-container {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .form-header {
+      text-align: center;
+      margin-bottom: 25px;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 18px;
+    }
+
+    .form-group .label {
+      font-size: 14px;
+      color: #555;
+      margin: 4px;
+      font-weight: 500;
+    }
+
+    .input, #textarea, .select {
+      padding: 14px;
+      border-radius: 12px;
+      border: 1px solid #e0e0e0;
+      background: #f9f9f9;
+      font-size: 15px;
+      resize: none;
+      transition: all 0.3s ease;
+    }
+
+    .input:focus, #textarea:focus, .select:focus {
+      outline: none;
+      border-color: #8EC5FC;
+      box-shadow: 0 0 0 3px rgba(142, 197, 252, 0.2);
+    }
+
+    #textarea {
+      min-height: 130px;
+    }
+
+    .checkbox-group {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 5px;
+    }
+
+    .checkbox-group input {
+      width: 18px;
+      height: 18px;
+    }
+
+    .checkbox-group label {
+      font-size: 14px;
+      color: #666;
+      margin-bottom: 0;
+    }
+
+    .button {
+      background: linear-gradient(135deg, #8EC5FC 0%, #E0C3FC 100%);
+      border: none;
+      padding: 16px;
+      border-radius: 12px;
+      font-size: 16px;
+      font-weight: 600;
+      color: white;
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      margin-top: 10px;
+    }
+
+    .button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(142, 197, 252, 0.4);
+    }
+
+    .privacy-note {
+      font-size: 12px;
+      color: #888;
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    @media (max-width: 900px) {
+      .contact-container {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        max-height: none;
+        overflow-y: visible;
+      }
+
+      .divider {
+        display: block;
+        height: 1px;
+        background: #e0e0e0;
+        margin: 10px 0 30px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 28px;
+      }
+
+      .contact-container {
+        padding: 30px 20px;
+      }
+
+      .contact-method {
+        padding: 12px 15px;
+      }
+      
+      body {
+        padding: 20px 10px;
+      }
+    }
+
+    /* Scrollbar styling */
+    .contact-container::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    .contact-container::-webkit-scrollbar-track {
+      background: rgba(255, 255, 255, 0.5);
+      border-radius: 10px;
+    }
+
+    .contact-container::-webkit-scrollbar-thumb {
+      background: linear-gradient(135deg, #8EC5FC 0%, #E0C3FC 100%);
+      border-radius: 10px;
+    }
+
+    .contact-container::-webkit-scrollbar-thumb:hover {
+      background: linear-gradient(135deg, #7ab4f5 0%, #d1a3f5 100%);
+    }
+  </style>
+</head>
+<body>
+  {%extends "base.html"%}
+  {%block content%}
+  <div class="floating-shapes">
+    <div class="shape"></div>
+    <div class="shape"></div>
+    <div class="shape"></div>
+    <div class="shape"></div>
+  </div>
+
+  <div class="contact-container">
+    <div class="contact-info">
+      <div class="header">
+        <div class="logo"><i class="fas fa-leaf"></i></div>
+        <h1>Get in Touch</h1>
+        <div class="tagline">We'd love to hear from you</div>
+      </div>
+
+      <div class="info-section">
+        <div class="section-title">
+          <i class="fas fa-phone-alt"></i> Contact Information
+        </div>
+        <div class="contact-methods">
+          <div class="contact-method">
+            <div class="method-icon">
+              <i class="fas fa-envelope"></i>
+            </div>
+            <div class="method-details">
+              <h3>Email Us</h3>
+              <p>hello@perfeita.com</p>
+            </div>
+          </div>
+          <div class="contact-method">
+            <div class="method-icon">
+              <i class="fas fa-phone-alt"></i>
+            </div>
+            <div class="method-details">
+              <h3>Call Us</h3>
+              <p>+91 98765 43210</p>
+            </div>
+          </div>
+          <div class="contact-method">
+            <div class="method-icon">
+              <i class="fas fa-map-marker-alt"></i>
+            </div>
+            <div class="method-details">
+              <h3>Visit Us</h3>
+              <p>42 Serenity Lane, Bangalore, India</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="info-section">
+        <div class="section-title">
+          <i class="fas fa-clock"></i> Business Hours
+        </div>
+        <div class="contact-methods">
+          <div class="contact-method">
+            <div class="method-icon">
+              <i class="fas fa-calendar-week"></i>
+            </div>
+            <div class="method-details">
+              <h3>Weekdays</h3>
+              <p>9:00 AM - 6:00 PM</p>
+            </div>
+          </div>
+          <div class="contact-method">
+            <div class="method-icon">
+              <i class="fas fa-calendar-day"></i>
+            </div>
+            <div class="method-details">
+              <h3>Weekends</h3>
+              <p>10:00 AM - 4:00 PM</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section-title">
+        <i class="fas fa-hashtag"></i> Follow Us
+      </div>
+      <div class="social-links">
+        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+        <a href="#" class="social-link"><i class="fab fa-pinterest"></i></a>
+        <a href="#" class="social-link"><i class="fab fa-tiktok"></i></a>
+      </div>
+    </div>
+
+    <div class="form-container">
+      <div class="form-header">
+        <h1>Send Us a Message</h1>
+        <div class="tagline">We'll get back to you within 24 hours</div>
+      </div>
+
+      <form action="{{ url_for('contact') }}" method="post">
+        {{ form.hidden_tag() }}
+
+        <p class="form-group">
+          {{form.name.label(class='label')}}
+          {{form.name(placeholder="Enter Your Name",class='input')}}
+        </p>
+
+        <p class="form-group">
+          {{form.email.label(class='label')}}
+          {{form.email(size=30,placeholder="Enter Your Email", class='input')}}
+        </p>
+
+        <p class="form-group">
+          {{form.message.label(class='label')}}
+          {{form.message(placeholder="Enter Your Message",class='input',id='textarea')}}
+        </p>
+        
+        <p class="form-group">
+          {{form.subject.label(class='label')}}
+          {{form.subject(class="input")}}    
+        </p>
+        
+        <p class="checkbox-group">
+          {{form.newsletter()}}
+          {{form.newsletter.label()}}
+        </p>
+
+        <p>
+          {{form.submit(class='button')}}
+        </p>
+
+        <div class="privacy-note">
+          By submitting this form, you agree to our Privacy Policy and Terms of Service.
+        </div>
+      </form>
+    </div>
+  </div>
+  <br>
+  {%endblock%}
+
+  
+</body>
+</html>

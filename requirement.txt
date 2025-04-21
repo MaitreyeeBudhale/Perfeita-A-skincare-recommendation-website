@@ -1,0 +1,7 @@
+pip install Flask Flask-Cors mysql-connector-python
+pip install flask-mysqldb
+
+jupyter nbconvert --to script model_training/model.ipynb
+
+
+

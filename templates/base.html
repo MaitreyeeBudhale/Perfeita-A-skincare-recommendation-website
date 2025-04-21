@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;500;700&family=Poppins:wght@300;400;500;600;700&display=swap');
+      
+     header {
+      width: 100%;
+      height: 70px;
+      padding: 0 5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 1000;
+    }
+
+    header nav {
+      display: flex;
+      gap: 2rem;
+    }
+
+    header nav a {
+      color: var(--text-color);
+      font-weight: 500;
+      font-family: 'Playfair Display', serif;
+      position: relative;
+    }
+
+    header nav a:after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: -5px;
+      left: 0;
+      background-color: var(--primary-color);
+      transition: width 0.3s ease;
+    }
+
+    header nav a:hover:after, header nav a.active:after {
+      width: 100%;
+    }
+
+    header nav a:hover {
+      color: var(--primary-color);
+    }
+
+    header h6 {
+      font-size: 2.2rem;
+      font-family: 'Great Vibes', cursive;
+      color: var(--text-color);
+    }
+
+    header h6 span {
+      color: var(--primary-color);
+    }
+
+    header .actions {
+      display: flex;
+      gap: 1.5rem;
+      align-items: center;
+    }
+
+    header .actions i {
+      font-size: 1.4rem;
+      cursor: pointer;
+      color: var(--text-color);
+      transition: 0.2s ease;
+    }
+
+    header .actions i:hover {
+      color: var(--primary-color);
+      transform: scale(1.1);
+    }
+    .mobile-menu {
+      display: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+    .user-menu {
+  position: relative;
+  cursor: pointer;
+  color: var(--text-color);
+}
+
+.user-menu .fa-user {
+  font-size: 1.4rem;
+  transition: 0.2s ease;
+}
+
+.user-menu:hover .fa-user {
+  color: var(--primary-color);
+  transform: scale(1.1);
+}
+
+.user-menu .dropdown {
+  visibility: hidden;
+  opacity: 0;
+  position: absolute;
+  top: 120%;
+  right: 0;
+  background: white;
+  border: 1px solid #ddd;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  padding: 10px;
+  min-width: 140px;
+  text-align: left;
+  z-index: 100;
+  border-radius: 6px;
+  transition: opacity 0.2s ease, visibility 0.2s ease;
+}
+
+.user-menu:hover .dropdown,
+.user-menu .dropdown:hover {
+  visibility: visible;
+  opacity: 1;
+}
+
+.user-menu .dropdown p {
+  margin: 0 0 10px;
+  font-weight: 500;
+  color: #333;
+}
+
+.user-menu .dropdown a {
+  text-decoration: none;
+  color: #d9534f;
+  font-weight: 500;
+}
+
+.user-menu .dropdown a:hover {
+  text-decoration: underline;
+}
+
+
+    footer {
+        background: #333;
+        color: white;
+        text-align: center;
+        padding: 15px;
+        margin-top: 30px;
+    }
+
+    
+    </style>
+</head>
+<body>
+    <header>
+      
+        <nav>
+          <a class="active" href="/">Home</a>
+          <a href="/about">About</a>
+          <a href="/contact">Contact Us</a>
+          <a href="/model">Recommendation </a>
+        </nav>
+        <h6><span></span> Perfeita</h6>
+        <div class="actions">
+          
+              
+          {% if session.get('username') %}
+            <div class="user-menu">
+              <i class="fa-solid fa-user"></i>
+              <div class="dropdown">
+                <p>{{ session['username'] }}</p>
+                <a href="/logout">Logout</a>
+              </div>
+            </div>
+          {% else %}
+            <a href="/login" class="login-link">Sign In / Login</a>
+          {% endif %}
+           
+        </div>
+    </header>
+
+    
+    <main>
+      {% block content %}{% endblock %}
+    </main>
+    
+</body>
+</html>

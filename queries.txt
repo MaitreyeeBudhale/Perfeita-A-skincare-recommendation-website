@@ -1,0 +1,14 @@
+CREATE TABLE users (
+    userId INT PRIMARY KEY AUTO_INCREMENT,
+    username VARCHAR(50) NOT NULL,
+    email VARCHAR(50) NOT NULL CHECK (email LIKE '%@gmail.com'),
+    password VARCHAR(200) NOT NULL);
+
+
+CREATE TABLE Contact (
+    ContactId INT PRIMARY KEY AUTO_INCREMENT,
+    Name VARCHAR(50) NOT NULL,
+    Email VARCHAR(200) CHECK (Email LIKE '%@gmail.com'),
+    Message LONGTEXT
+);
+
