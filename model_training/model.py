@@ -11,7 +11,7 @@ from sklearn.preprocessing import OneHotEncoder
 # In[4]:
 
 
-df = pd.read_csv(r"C:\Users\Maitrayee Budhale\OneDrive\Desktop\skincare.csv")
+df = pd.read_csv(r"../Data/skincare.csv")
 df
 df.columns
 
